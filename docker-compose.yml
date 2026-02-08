@@ -12,9 +12,9 @@ services:
 #    env_file:
 #      - .env
  
- queuestar:
+ queuesmart:
    build: .
-   container_name: queuestar
+   container_name: queuesmart
    ports:
      - "8000:8000"
   #  depends_on:
