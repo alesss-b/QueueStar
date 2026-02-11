@@ -2,14 +2,23 @@ from django.views.generic import TemplateView, CreateView, FormView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-from django.contrib.auth import login
+from django.contrib.auth import login, logout
 from django.urls import reverse_lazy
+from django.shortcuts import redirect
 
 
 class UsersView(LoginRequiredMixin, TemplateView):
     """Users page view; redirects to login if not authenticated."""
     login_url = 'login'
     template_name = 'pages/users.html'
+
+    def get(self, request, *args, **kwargs):
+        user = request.user
+        if user.groups.filter(name='Customers').exists():
+            return redirect('portal')
+        if user.groups.filter(name='Staff').exists():
+            return redirect('operations')
+        return super().get(request, *args, **kwargs)
     
 
 class LoginView(FormView):
@@ -36,3 +45,9 @@ class RegisterView(SuccessMessageMixin, CreateView):
     success_url = reverse_lazy('login')
     template_name = 'pages/register.html'
     success_message = "Your account was created successfully!"   
+
+
+def logout_view(request):
+    """Log out the user and redirect to the login page."""
+    logout(request)
+    return redirect('login')
