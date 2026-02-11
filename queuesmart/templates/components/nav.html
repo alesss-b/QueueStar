@@ -3,3 +3,8 @@
     <a href="/">Home</a>
     {% block nav_links %}{% endblock %}
 </nav>
+{% if user.is_authenticated %}
+    <div>Currently logged in as: {{user}}</div>
+{% else %}
+    <div>Sign in or create an account.</div>
+{% endif %}
