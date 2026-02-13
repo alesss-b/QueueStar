@@ -1,0 +1,14 @@
+{% extends 'components/users_root.html' %}
+{% block page_title %}Email Verification{% endblock %}
+{% block body %}
+    <h1>This is the email verification page.</h1>
+    <form method="post">
+        {% csrf_token %}
+        {% comment %} {{ form.as_p }} {% endcomment %}
+        <p>A code has been sent to [USER EMAIL]...</p>
+        <label for="verification-code">Verification Code</label>
+        <input type="text" id="verification-code" name="verification-code">
+        <button id="resend-code">Resend Code</button>
+        <button type="submit">Verify Email</button>
+    </form>   
+{% endblock %}

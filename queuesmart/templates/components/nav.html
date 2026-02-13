@@ -2,9 +2,12 @@
 <nav>
     <a href="/">Home</a>
     {% block nav_links %}{% endblock %}
+    <a href="{% url 'notifications' %}">Notifications</a>
 </nav>
 {% if user.is_authenticated %}
-    <div>Currently logged in as: {{ user }}</div>
+    <div>Currently logged in as: 
+        <a href="{% url 'user_details'%}">{{ user }}</a>
+    </div>
     <a href="{% url 'logout' %}">logout</a>
 {% else %}
     <div>Sign in or create an account.</div>

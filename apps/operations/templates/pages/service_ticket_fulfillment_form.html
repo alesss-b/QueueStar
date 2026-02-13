@@ -1,0 +1,21 @@
+{% extends 'components/operations_root.html' %}
+{% block page_title %}Service Ticket Fulfillment Form{% endblock %}
+{% block body %}
+    <h1>This is the service ticket fulfillment form page page.</h1>
+    <p>This is where staff create new service tickets fulfillment. Fulfillments can't be edited.</p>
+    <form method="post">
+        {% csrf_token %}
+        {% comment %} {{ form.as_p }} This is what we'll use when we actually create the form backend{% endcomment %}
+        <p>Customer Name...</p>
+        <p>Service Name...</p>
+        <p>Ticket Created Timestamp...</p>
+        <label for="service-provider">Service Provider:</label>
+        <select name="service-provider" id="service-provider">
+            <option value="1">Joe Schmoe, MD</option>
+            <option value="2">Other person</option>
+            <option value="3">You get it...</option>
+        </select>
+        <button>Back</button>
+        <button type="submit">Create Fulfillment</button>
+    </form>  
+{% endblock %}

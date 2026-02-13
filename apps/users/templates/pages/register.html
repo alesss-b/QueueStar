@@ -4,6 +4,8 @@
     <h1>This is the register page.</h1>
     <form method="post">
         {% csrf_token %}
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name">
         {{ form.as_p }}
         <button type="submit">Sign Up</button>
     </form>   

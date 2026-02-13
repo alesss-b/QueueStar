@@ -1,0 +1,24 @@
+{% extends 'components/operations_root.html' %}
+{% block page_title %}Service Form{% endblock %}
+{% block body %}
+    <h1>This is the service form page page.</h1>
+    <p>This is where staff create new services and edit existing ones. Need to detect if editing or creating new Service and change submit button text</p>
+    <form method="post">
+        {% csrf_token %}
+        {% comment %} {{ form.as_p }} This is what we'll use when we actually create the form backend{% endcomment %}
+        <label for="service-name">Service Name:</label>
+        <input type="text" id="service-name" name="service-name">
+        <label for="service-description">Service Description:</label>
+        <textarea name="service-description" id="service-description"></textarea>
+        <label for="expected-duration">Expected Duration (minutes):</label>
+        <input type="number" id="expected-duration" id="expected-duration">
+        <label for="priority-level">Priority Level:</label>
+        <select name="priority-level" id="priority-level">
+            <option value="low">Low</option>
+            <option value="medium">Medium</option>
+            <option value="high">High</option>
+        </select>
+        <button>Back</button>
+        <button type="submit">Create Service/Save Changes</button>
+    </form>  
+{% endblock %}

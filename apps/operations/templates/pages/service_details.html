@@ -1,0 +1,11 @@
+{% extends 'components/operations_root.html' %}
+{% block page_title %}Service Details{% endblock %}
+{% block body %}
+    <h1>This is the service detials page.</h1>
+    <p>Current Service Ticket List Table...</p>
+    <p>Service Ticket History</p>
+    <p>Queue Currently Open/Closed</p>
+    <a href="{% url 'edit_service' %}">Edit Service</a>
+    <button>Open/Close Service Queue</button>
+    <a href="{% url 'fulfill_service_ticket' %}">Service Next User in Queue</a>
+{% endblock %}

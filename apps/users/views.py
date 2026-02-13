@@ -46,6 +46,18 @@ class RegisterView(SuccessMessageMixin, CreateView):
     template_name = 'pages/register.html'
     success_message = "Your account was created successfully!"   
 
+class NotificationsView(TemplateView):
+    """Notifications page view."""
+    template_name = 'pages/notifications.html'
+
+class UserDetailsView(TemplateView):
+    """User Details page view."""
+    template_name = 'pages/user_details.html'
+
+class EmailVerificationView(TemplateView):
+    """Email Verification page view."""
+    template_name = 'pages/email_verification.html'
+
 
 def logout_view(request):
     """Log out the user and redirect to the login page."""
